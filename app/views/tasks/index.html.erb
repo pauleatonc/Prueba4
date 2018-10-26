@@ -1,0 +1,28 @@
+<table>
+  <tbody>
+    <div class="container">
+      <h1 class="center">Actividades para este 18 de septiembre</h1>
+      <div  class="row">
+        <% @tasks.each do |task| %>
+          <div class="col-md-4 col-sm-1">
+              <div class="card marginc">
+               <%= image_tag task.photo, class: 'card-img-top' %>
+                <div class="body">
+                  <h3> <%= task.title %> </h3>
+                  <p> <%= task.description %> </p>
+                      <% if task.users.include?(current_user) %>
+                          <p><%= link_to 'Cambiar a No completado', ruta_1_done_path(task.dones.find_by(user: current_user).id), method: :post, data: { confirm: '¿Seguro quiere borrar?' } %></p>
+                        <% else %>
+                          <p><%= link_to 'Completado', task_dones_path(task), class: 'btn btn-success', method: :post %></p>
+                        <% end %>
+                        <p><%= link_to 'Mostrar', task, class: 'btn btn-info' %></p>
+                  </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  </tbody>
+</table>
+
+<br>

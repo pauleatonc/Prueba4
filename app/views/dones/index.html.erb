@@ -1,0 +1,14 @@
+<table class="table">
+  <% @dones.each do |done| %>
+    <tr>
+      <td><%= done.task.title %></td>
+      <td><%= done.task.description %></td>
+      <td><%= link_to 'Borrar', done, method: :delete, data: { confirm: '¿Seguro quiere borrar?' } %></td>
+    </tr>
+  <% end %>
+
+  <tr>
+    <td>Total:</td>
+    <td> <%= @dones.count %></td>
+  </tr>
+</table>

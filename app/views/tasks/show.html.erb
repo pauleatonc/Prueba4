@@ -1,0 +1,39 @@
+<div class="container">
+
+
+
+  <p>
+     <%= image_tag @task.photo, class: 'card-img-top' %>
+  </p>
+
+  <p>
+    <strong>Title:</strong>
+    <%= @task.title %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @task.description %>
+  </p>
+
+  <p>
+    <strong>¿Quien lo ha completado?:</strong>
+    <table class="table">
+      <thead>
+        <th>Nombre</th>
+        <th>Email</th>
+      </thead>
+      <% @task.users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+        </tr>
+      <% end %>
+    </table>
+  </p>
+
+  <h3>
+    <%= link_to 'Back', tasks_path %>
+  </h3>
+
+</div>
